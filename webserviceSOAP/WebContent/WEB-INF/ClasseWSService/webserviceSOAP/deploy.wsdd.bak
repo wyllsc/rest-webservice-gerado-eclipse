@@ -1,0 +1,37 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClasseWSService WSDL service -->
+
+  <service name="ClasseWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webserviceSOAP"/>
+      <parameter name="wsdlServiceElement" value="ClasseWSService"/>
+      <parameter name="schemaQualified" value="http://webserviceSOAP"/>
+      <parameter name="wsdlServicePort" value="ClasseWS"/>
+      <parameter name="className" value="webserviceSOAP.ClasseWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ClasseWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="multiplicacao" qname="operNS:multiplicacao" xmlns:operNS="http://webserviceSOAP" returnQName="retNS:multiplicacaoReturn" xmlns:retNS="http://webserviceSOAP" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:valor1" xmlns:pns="http://webserviceSOAP" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:valor2" xmlns:pns="http://webserviceSOAP" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="retornaString" qname="operNS:retornaString" xmlns:operNS="http://webserviceSOAP" returnQName="retNS:retornaStringReturn" xmlns:retNS="http://webserviceSOAP" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:parametro" xmlns:pns="http://webserviceSOAP" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="soma" qname="operNS:soma" xmlns:operNS="http://webserviceSOAP" returnQName="retNS:somaReturn" xmlns:retNS="http://webserviceSOAP" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:valor1" xmlns:pns="http://webserviceSOAP" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:valor2" xmlns:pns="http://webserviceSOAP" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="retornaString soma multiplicacao"/>
+
+  </service>
+</deployment>

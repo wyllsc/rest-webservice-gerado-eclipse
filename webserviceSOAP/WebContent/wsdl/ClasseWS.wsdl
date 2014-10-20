@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webserviceSOAP" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webserviceSOAP" xmlns:intf="http://webserviceSOAP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webserviceSOAP" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="multiplicacao">
+    <complexType>
+     <sequence>
+      <element name="valor1" type="xsd:int"/>
+      <element name="valor2" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="multiplicacaoResponse">
+    <complexType>
+     <sequence>
+      <element name="multiplicacaoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retornaString">
+    <complexType>
+     <sequence>
+      <element name="parametro" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retornaStringResponse">
+    <complexType>
+     <sequence>
+      <element name="retornaStringReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="soma">
+    <complexType>
+     <sequence>
+      <element name="valor1" type="xsd:int"/>
+      <element name="valor2" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="somaResponse">
+    <complexType>
+     <sequence>
+      <element name="somaReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="multiplicacaoResponse">
+
+      <wsdl:part element="impl:multiplicacaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="somaResponse">
+
+      <wsdl:part element="impl:somaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retornaStringRequest">
+
+      <wsdl:part element="impl:retornaString" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retornaStringResponse">
+
+      <wsdl:part element="impl:retornaStringResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="somaRequest">
+
+      <wsdl:part element="impl:soma" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="multiplicacaoRequest">
+
+      <wsdl:part element="impl:multiplicacao" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClasseWS">
+
+      <wsdl:operation name="multiplicacao">
+
+         <wsdl:input message="impl:multiplicacaoRequest" name="multiplicacaoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:multiplicacaoResponse" name="multiplicacaoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retornaString">
+
+         <wsdl:input message="impl:retornaStringRequest" name="retornaStringRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retornaStringResponse" name="retornaStringResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="soma">
+
+         <wsdl:input message="impl:somaRequest" name="somaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:somaResponse" name="somaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClasseWSSoapBinding" type="impl:ClasseWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="multiplicacao">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="multiplicacaoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="multiplicacaoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retornaString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retornaStringRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retornaStringResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="soma">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="somaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="somaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClasseWSService">
+
+      <wsdl:port binding="impl:ClasseWSSoapBinding" name="ClasseWS">
+
+         <wsdlsoap:address location="http://localhost:8080/webserviceSOAP/services/ClasseWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
